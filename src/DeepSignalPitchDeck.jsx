@@ -625,6 +625,73 @@ function CompTable() {
         ))}
       </div>
 
+      {/* Gumloop comparison — the closest analog */}
+      <div style={{
+        padding: "28px 32px", borderRadius: 20, marginBottom: 24,
+        background: `linear-gradient(135deg, ${C.purple}0a, ${C.cyan}06)`,
+        border: `1px solid ${C.purple}25`, position: "relative", overflow: "hidden",
+      }}>
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: 2,
+          background: `linear-gradient(90deg, ${C.purple}, ${C.cyan})`,
+        }} />
+        <div style={{ fontSize: 11, fontWeight: 800, color: C.purple, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 16 }}>
+          Closest Analog: Gumloop — $50M from Benchmark (March 2025)
+        </div>
+        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+          {/* Gumloop side */}
+          <div style={{
+            flex: "1 1 260px", padding: "20px", borderRadius: 16,
+            background: C.card, border: `1px solid ${C.border}`,
+          }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: C.gray, marginBottom: 12 }}>Gumloop</div>
+            {[
+              { label: "Model", val: "Builder tool — you build your own agents", color: C.grayDim },
+              { label: "Audience", val: "Enterprise technical teams", color: C.grayDim },
+              { label: "Network Effects", val: "None — single-tenant, no data flywheel", color: C.red },
+              { label: "Moat", val: "Features only — can be cloned", color: C.red },
+            ].map((r, i) => (
+              <div key={i} style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: C.grayDim, letterSpacing: 1, textTransform: "uppercase" }}>{r.label}</div>
+                <div style={{ fontSize: 13, color: r.color, fontWeight: 600, lineHeight: 1.4 }}>{r.val}</div>
+              </div>
+            ))}
+          </div>
+          {/* Deep Signal side */}
+          <div style={{
+            flex: "1 1 260px", padding: "20px", borderRadius: 16,
+            background: `linear-gradient(145deg, ${C.card}, ${C.gold}06)`,
+            border: `1px solid ${C.gold}30`,
+          }}>
+            <div style={{
+              fontSize: 16, fontWeight: 800, marginBottom: 12,
+              background: `linear-gradient(135deg, ${C.gold}, ${C.white})`,
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+            }}>Deep Signal</div>
+            {[
+              { label: "Model", val: "Marketplace — hire pre-built AI employees", color: C.white },
+              { label: "Audience", val: "33M SMBs, any skill level", color: C.white },
+              { label: "Network Effects", val: "Every deployment improves all templates", color: C.green },
+              { label: "Moat", val: "Data + playbooks + marketplace supply", color: C.green },
+            ].map((r, i) => (
+              <div key={i} style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: C.gold, letterSpacing: 1, textTransform: "uppercase" }}>{r.label}</div>
+                <div style={{ fontSize: 13, color: r.color, fontWeight: 600, lineHeight: 1.4 }}>{r.val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{
+          marginTop: 16, padding: "12px 20px", borderRadius: 12,
+          background: C.gold + "08", border: `1px solid ${C.gold}15`, textAlign: "center",
+        }}>
+          <span style={{ fontSize: 13, color: C.gray }}>
+            Benchmark valued the <span style={{ color: C.white, fontWeight: 700 }}>builder tool</span> at $50M+.{" "}
+            The <span style={{ color: C.gold, fontWeight: 700 }}>marketplace with network effects</span> is a fundamentally bigger business.
+          </span>
+        </div>
+      </div>
+
       {/* The punchline */}
       <div style={{
         padding: "32px 36px", borderRadius: 20, textAlign: "center",
@@ -636,17 +703,18 @@ function CompTable() {
           background: `linear-gradient(90deg, ${C.blue}, ${C.gold})`,
         }} />
         <div style={{ fontSize: 14, color: C.gray, marginBottom: 6 }}>
-          They built platforms for <span style={{ color: C.white, fontWeight: 700 }}>human work</span>
+          They built platforms for <span style={{ color: C.white, fontWeight: 700 }}>human work</span> or <span style={{ color: C.white, fontWeight: 700 }}>technical users</span>
         </div>
         <div style={{
           fontSize: "clamp(20px, 3vw, 30px)", fontWeight: 900, lineHeight: 1.3, marginBottom: 12,
           background: `linear-gradient(135deg, ${C.gold}, ${C.white})`,
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
         }}>
-          We're building the first platform for AI work.
+          We're building the first marketplace where anyone hires AI.
         </div>
-        <div style={{ fontSize: 13, color: C.gray, maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
-          No one else connects the intelligence layer (OpenAI, Anthropic) to the business layer (33M SMBs) through a self-serve hiring experience. <span style={{ color: C.gold, fontWeight: 700 }}>We own this gap.</span>
+        <div style={{ fontSize: 13, color: C.gray, maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
+          Gumloop lets engineers build agents. We let a dentist's office, a law firm, or an insurance company
+          hire an AI employee in 30 minutes — no technical skill required. <span style={{ color: C.gold, fontWeight: 700 }}>That's the gap nobody else is filling.</span>
         </div>
       </div>
     </div>
@@ -732,7 +800,7 @@ function ThreeLayers() {
     {
       id: 0, tag: "LAYER 1", label: "Self-Serve Hosting", status: "Live Now",
       price: "$19–99/mo", role: "Top of Funnel",
-      desc: "Managed OpenClaw instances. Sign up, get a working AI agent in minutes. Removes all ops pain.",
+      desc: "Managed AI agent instances. Sign up, get a working AI agent in minutes. Zero infrastructure, zero ops pain.",
       color: C.blue, target: "Solopreneurs & experimenters",
     },
     {
@@ -890,8 +958,8 @@ export default function DeepSignalPitchDeck() {
           }}>
             {[
               { val: "$120K+", label: "Revenue Signed", color: C.green },
-              { val: "2", label: "Live Clients", color: C.blue },
-              { val: "$500B+", label: "TAM (US Only)", color: C.gold },
+              { val: "90%", label: "Cost Reduction vs. Human Hire", color: C.cyan },
+              { val: "<30 min", label: "From Sign-Up to AI Working", color: C.blue },
             ].map((s, i) => (
               <div key={i} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "clamp(24px, 3.5vw, 36px)", fontWeight: 900, color: s.color, letterSpacing: -1 }}>{s.val}</div>
@@ -905,7 +973,7 @@ export default function DeepSignalPitchDeck() {
             {[
               { t: "First to Market", c: C.blue },
               { t: "Revenue Generating", c: C.green },
-              { t: "Zero Competition", c: C.gold },
+              { t: "No Direct Competitor", c: C.gold },
               { t: "33M Businesses Waiting", c: C.cyan },
             ].map((p, i) => (
               <Pill key={i} text={p.t} color={p.c} />
@@ -919,7 +987,7 @@ export default function DeepSignalPitchDeck() {
             pill="The Problem"
             pillColor={C.red}
             title={<>The Deployment Gap Is a <span style={{ color: C.gold }}>$500 Billion</span> Problem</>}
-            subtitle="AI can do the work today. But 87% of AI projects fail — not because the technology doesn't work, but because nobody bridges the gap between AI capability and real-world business deployment."
+            subtitle="AI can do the work today. But 87% of AI projects fail (McKinsey, 2024) — not because the technology doesn't work, but because nobody bridges the gap between AI capability and real-world business deployment."
           />
           <div style={{
             display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginBottom: 32,
@@ -928,7 +996,7 @@ export default function DeepSignalPitchDeck() {
               { stat: "33M", label: "US businesses need operational help", color: C.blue },
               { stat: "87%", label: "of AI implementations fail to launch", color: C.red },
               { stat: "$100-300K", label: "avg SMB back-office spend per year", color: C.gold },
-              { stat: "0", label: "platforms that make hiring AI self-serve", color: C.cyan },
+              { stat: "0", label: "self-serve AI hiring marketplaces exist", color: C.cyan },
             ].map((s, i) => (
               <div key={i} style={{
                 flex: "1 1 200px", maxWidth: 240, textAlign: "center",
@@ -1037,7 +1105,7 @@ export default function DeepSignalPitchDeck() {
             {[
               { title: "LLM Costs Drop 10x/Year", desc: "What cost $50/day in 2024 costs $5 today and $0.50 next year. The economics are about to explode.", color: C.green, icon: "📉" },
               { title: "Enterprise Is Adopting", desc: "3M, Walmart, JPMorgan are spending billions. SMBs see it and want in — but have no on-ramp.", color: C.blue, icon: "🏗️" },
-              { title: "Nobody Owns This Layer", desc: "Salesforce adds AI features. Zapier does automations. Nobody lets you hire an AI employee. Zero competition.", color: C.gold, icon: "🏆" },
+              { title: "Nobody Owns This Layer", desc: "Salesforce adds AI features. Zapier does automations. Gumloop lets engineers build agents. Nobody lets a business owner hire one. Different category entirely.", color: C.gold, icon: "🏆" },
               { title: "40% of Apps by 2027", desc: "Gartner says 40% of enterprise apps will have AI agents by end of 2026. The wave is here. We ride it first.", color: C.cyan, icon: "🌊" },
             ].map((w, i) => (
               <div key={i} style={{
@@ -1185,10 +1253,10 @@ export default function DeepSignalPitchDeck() {
         {/* ════════════════ COMPARABLES ════════════════ */}
         <Section style={{ paddingBottom: 80 }}>
           <SectionHeader
-            pill="Nobody Else Does This"
+            pill="The Landscape"
             pillColor={C.cyan}
-            title={<>$150B+ in Platforms for Human Work.<br /><span style={{ color: C.gold }}>Zero for AI Work. Until Now.</span></>}
-            subtitle="Every one of these companies built a platform for human employees or human workflows. None of them let you hire an AI employee. That's the gap we own."
+            title={<>$150B+ in Platforms for Human Work.<br /><span style={{ color: C.gold }}>No Marketplace for AI Work. Until Now.</span></>}
+            subtitle="Others build tools for human employees, human workflows, or technical teams. Nobody built a self-serve marketplace where any business hires AI. That's the gap we own."
           />
           <CompTable />
         </Section>
