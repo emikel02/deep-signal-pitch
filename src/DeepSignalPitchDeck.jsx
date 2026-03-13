@@ -441,49 +441,6 @@ function LiveHiringDemo() {
   );
 }
 
-// ─── REVENUE WATERFALL ───────────────────────────────────────
-function RevenueWaterfall() {
-  const [ref, inView] = useInView(0.2);
-  const data = [
-    { label: "Year 1", sub: "Pre-Seed", arr: 2, color: C.blue },
-    { label: "Year 2", sub: "Seed / A", arr: 9, color: C.cyan },
-    { label: "Year 3", sub: "Series A/B", arr: 60, color: C.gold },
-    { label: "Year 4", sub: "Growth", arr: 150, color: C.green },
-  ];
-  const maxArr = 150;
-
-  return (
-    <div ref={ref} style={{ display: "flex", alignItems: "flex-end", gap: 16, justifyContent: "center", height: 260, padding: "0 20px" }}>
-      {data.map((d, i) => {
-        const height = inView ? (d.arr / maxArr) * 200 : 0;
-        return (
-          <div key={i} style={{ flex: "1 1 120px", maxWidth: 160, textAlign: "center" }}>
-            <div style={{
-              fontSize: "clamp(18px, 3vw, 28px)", fontWeight: 900, color: d.color,
-              marginBottom: 8, transition: "all 1s ease", transitionDelay: `${i * 200}ms`,
-              opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(10px)",
-            }}>
-              ${d.arr}M{d.arr >= 100 ? "+" : ""}
-            </div>
-            <div style={{
-              height, background: `linear-gradient(180deg, ${d.color}, ${d.color}40)`,
-              borderRadius: "12px 12px 4px 4px", transition: `height 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${i * 200}ms`,
-              position: "relative", overflow: "hidden", minHeight: 4,
-            }}>
-              <div style={{
-                position: "absolute", top: 0, left: 0, right: 0, height: "100%",
-                background: `linear-gradient(180deg, ${d.color}30, transparent)`,
-              }} />
-            </div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: C.white, marginTop: 12 }}>{d.label}</div>
-            <div style={{ fontSize: 11, color: C.grayDim, fontWeight: 600 }}>{d.sub}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
 // ─── BEFORE / AFTER COMPARISON ───────────────────────────────
 function BeforeAfter() {
   return (
@@ -768,71 +725,6 @@ function FlywheelRing() {
   );
 }
 
-// ─── THE ASK SECTION ─────────────────────────────────────────
-function TheAsk() {
-  const uses = [
-    { label: "First 15–20 Managed Clients", pct: 30, color: C.blue },
-    { label: "Build 15–20 Role Playbooks", pct: 25, color: C.cyan },
-    { label: "Layer 2 Platform MVP", pct: 25, color: C.gold },
-    { label: "Team (4 people)", pct: 15, color: C.purple },
-    { label: "Operations Reserve", pct: 5, color: C.green },
-  ];
-
-  return (
-    <div>
-      <div style={{
-        display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center", marginBottom: 36,
-      }}>
-        <div style={{
-          flex: "1 1 260px", maxWidth: 320, padding: "32px 28px",
-          borderRadius: 20, textAlign: "center",
-          background: `linear-gradient(145deg, ${C.card}, ${C.gold}08)`,
-          border: `1px solid ${C.gold}30`,
-        }}>
-          <div style={{ fontSize: 11, color: C.gold, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>Pre-Seed Raise</div>
-          <div style={{ fontSize: 48, fontWeight: 900, color: C.white, letterSpacing: -2 }}>$500–750K</div>
-          <div style={{ fontSize: 14, color: C.gray, marginTop: 8 }}>SAFE at $10M cap</div>
-        </div>
-        <div style={{
-          flex: "1 1 260px", maxWidth: 320, padding: "32px 28px",
-          borderRadius: 20, textAlign: "center",
-          background: `linear-gradient(145deg, ${C.card}, ${C.green}08)`,
-          border: `1px solid ${C.green}30`,
-        }}>
-          <div style={{ fontSize: 11, color: C.green, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>12-Month Target</div>
-          <div style={{ fontSize: 48, fontWeight: 900, color: C.white, letterSpacing: -2 }}>$1.5–3M</div>
-          <div style={{ fontSize: 14, color: C.gray, marginTop: 8 }}>ARR from managed + self-serve</div>
-        </div>
-      </div>
-
-      {/* Use of funds bars */}
-      <div style={{
-        background: C.card, borderRadius: 20, padding: "28px 28px 24px",
-        border: `1px solid ${C.border}`,
-      }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: C.gray, letterSpacing: 1, textTransform: "uppercase", marginBottom: 20 }}>
-          Use of Funds
-        </div>
-        {uses.map((u, i) => (
-          <div key={i} style={{ marginBottom: 16 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: C.white }}>{u.label}</span>
-              <span style={{ fontSize: 14, fontWeight: 800, color: u.color }}>{u.pct}%</span>
-            </div>
-            <div style={{ height: 8, borderRadius: 4, background: C.grayDark, overflow: "hidden" }}>
-              <div style={{
-                height: "100%", width: `${u.pct}%`, borderRadius: 4,
-                background: `linear-gradient(90deg, ${u.color}, ${u.color}80)`,
-                transition: "width 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
-              }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // ─── THREE LAYERS VISUAL ─────────────────────────────────────
 function ThreeLayers() {
   const [active, setActive] = useState(1);
@@ -919,39 +811,6 @@ function ThreeLayers() {
           <span style={{ color: C.gold, fontWeight: 700 }}> Repeat</span>
         </span>
       </div>
-    </div>
-  );
-}
-
-// ─── UNIT ECONOMICS TABLE ────────────────────────────────────
-function UnitEconomics() {
-  const metrics = [
-    { label: "Avg Revenue / AI Employee", val: "$500/mo", color: C.blue },
-    { label: "Avg AI Employees / Business", val: "2.2", color: C.cyan },
-    { label: "Revenue Per Business", val: "$13,200/yr", color: C.gold },
-    { label: "Infrastructure Cost / Agent", val: "$50–150/mo", sub: "Declining 10x/yr", color: C.grayDim },
-    { label: "Customer Acquisition Cost", val: "$500–1,500", color: C.purple },
-    { label: "Lifetime Value (24mo)", val: "$26,400", color: C.green },
-  ];
-
-  return (
-    <div style={{
-      background: C.card, borderRadius: 20, padding: "28px", overflow: "hidden",
-      border: `1px solid ${C.border}`,
-    }}>
-      {metrics.map((m, i) => (
-        <div key={i} style={{
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          padding: "14px 0",
-          borderBottom: i < metrics.length - 1 ? `1px solid ${C.border}` : "none",
-        }}>
-          <div>
-            <span style={{ fontSize: 14, color: C.gray }}>{m.label}</span>
-            {m.sub && <span style={{ fontSize: 11, color: C.green, marginLeft: 8 }}>{m.sub}</span>}
-          </div>
-          <span style={{ fontSize: 18, fontWeight: 800, color: m.color }}>{m.val}</span>
-        </div>
-      ))}
     </div>
   );
 }
@@ -1045,9 +904,9 @@ export default function DeepSignalPitchDeck() {
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             {[
               { t: "First to Market", c: C.blue },
-              { t: "Pre-Seed: $500–750K", c: C.gold },
-              { t: "SAFE @ $10M Cap", c: C.cyan },
               { t: "Revenue Generating", c: C.green },
+              { t: "Zero Competition", c: C.gold },
+              { t: "33M Businesses Waiting", c: C.cyan },
             ].map((p, i) => (
               <Pill key={i} text={p.t} color={p.c} />
             ))}
@@ -1246,22 +1105,6 @@ export default function DeepSignalPitchDeck() {
           </div>
         </Section>
 
-        {/* ════════════════ UNIT ECONOMICS ════════════════ */}
-        <Section style={{ paddingBottom: 80 }}>
-          <SectionHeader
-            pill="Unit Economics"
-            pillColor={C.cyan}
-            title="Best-in-Class Economics at Scale"
-          />
-          <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center", marginBottom: 28 }}>
-            <StatCard label="LTV:CAC" value={<AnimNum target={53} suffix="x" duration={2000} />} sub="Top-decile SaaS" color={C.gold} icon="🎯" />
-            <StatCard label="Gross Margin" value={<AnimNum target={85} suffix="%" duration={2000} delay={200} />} sub="Software-like" color={C.green} icon="📈" />
-            <StatCard label="Net Revenue Retention" value={<AnimNum target={140} suffix="%" duration={2000} delay={400} />} sub="Businesses add more AI" color={C.cyan} icon="🔄" />
-            <StatCard label="Monthly Churn" value={<AnimNum target={2} prefix="<" suffix="%" duration={1500} delay={600} />} sub="Knowledge = switching cost" color={C.purple} icon="🔒" />
-          </div>
-          <UnitEconomics />
-        </Section>
-
         {/* ════════════════ FLYWHEEL ════════════════ */}
         <Section style={{ paddingBottom: 80 }}>
           <SectionHeader
@@ -1296,25 +1139,6 @@ export default function DeepSignalPitchDeck() {
           </div>
         </Section>
 
-        {/* ════════════════ REVENUE PATH ════════════════ */}
-        <Section style={{ paddingBottom: 80 }}>
-          <SectionHeader
-            pill="The Path"
-            pillColor={C.gold}
-            title={<>From Revenue Today to <span style={{ color: C.gold }}>$150M+ ARR</span></>}
-            subtitle="We're not pitching a concept. We have paying clients, signed contracts, and a clear line from $2M to $150M. The inflection point is when self-serve launches and growth goes exponential."
-          />
-          <RevenueWaterfall />
-          <div style={{
-            display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginTop: 36,
-          }}>
-            <StatCard label="Target Businesses" value={<AnimNum target={17000} suffix="+" duration={2500} />} sub="0.05% of US market" color={C.blue} />
-            <StatCard label="AI Employees Deployed" value={<AnimNum target={50000} suffix="+" duration={2500} delay={200} />} sub="On platform" color={C.cyan} />
-            <StatCard label="Role Templates" value={<AnimNum target={500} suffix="+" duration={2000} delay={400} />} sub="By industry & function" color={C.gold} />
-            <StatCard label="Connectors" value={<AnimNum target={1000} suffix="+" duration={2000} delay={600} />} sub="Every tool businesses use" color={C.purple} />
-          </div>
-        </Section>
-
         {/* ════════════════ COMPARABLES ════════════════ */}
         <Section style={{ paddingBottom: 80 }}>
           <SectionHeader
@@ -1324,54 +1148,6 @@ export default function DeepSignalPitchDeck() {
             subtitle="Every one of these companies built a platform for human employees or human workflows. None of them let you hire an AI employee. That's the gap we own."
           />
           <CompTable />
-        </Section>
-
-        {/* ════════════════ THE ASK ════════════════ */}
-        <Section style={{ paddingBottom: 80 }}>
-          <SectionHeader
-            pill="The Ask"
-            pillColor={C.gold}
-            title="Pre-Seed: $500–750K at $10M Cap"
-            subtitle="This capital buys the first-mover advantage. 12 months to lock in 15–20 managed clients, build the playbook library no one else has, and launch the only self-serve AI hiring platform in the market."
-          />
-          <TheAsk />
-        </Section>
-
-        {/* ════════════════ MILESTONES ════════════════ */}
-        <Section style={{ paddingBottom: 80 }}>
-          <SectionHeader
-            pill="12-Month Milestones"
-            pillColor={C.purple}
-            title="What First-Mover Capital Achieves"
-            subtitle="Every milestone widens the gap between us and anyone who tries to follow."
-          />
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 16,
-          }}>
-            {[
-              { milestone: "15–20 Managed Clients", detail: "Across 4–6 verticals with proven ROI data", color: C.blue, icon: "🏢" },
-              { milestone: "15–20 Role Playbooks", detail: "Battle-tested configurations ready for self-serve", color: C.cyan, icon: "📋" },
-              { milestone: "$1.5–3M ARR", detail: "From managed services + early Layer 2 revenue", color: C.green, icon: "💰" },
-              { milestone: "Layer 2 MVP Live", detail: "50–100 self-serve customers validating the model", color: C.gold, icon: "🚀" },
-              { milestone: "120%+ NRR", detail: "Businesses adding more AI employees over time", color: C.purple, icon: "📈" },
-              { milestone: "Series A Ready", detail: "$5–10M raise at $30–60M pre-money", color: C.blue, icon: "🎯" },
-            ].map((m, i) => (
-              <div key={i} style={{
-                padding: "24px 20px", borderRadius: 18,
-                background: C.card, border: `1px solid ${m.color}20`,
-                transition: "transform 0.3s, box-shadow 0.3s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = `0 8px 30px ${m.color}10`; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-              >
-                <div style={{ fontSize: 28, marginBottom: 12 }}>{m.icon}</div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: C.white, marginBottom: 6 }}>{m.milestone}</div>
-                <div style={{ fontSize: 13, color: C.gray, lineHeight: 1.5 }}>{m.detail}</div>
-              </div>
-            ))}
-          </div>
         </Section>
 
         {/* ════════════════ CLOSING ════════════════ */}
@@ -1450,9 +1226,9 @@ export default function DeepSignalPitchDeck() {
                 <div style={{
                   display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center",
                 }}>
-                  <Pill text="$500–750K Pre-Seed" color={C.gold} />
-                  <Pill text="$10M Cap SAFE" color={C.cyan} />
                   <Pill text="First to Market" color={C.blue} />
+                  <Pill text="Revenue Generating" color={C.green} />
+                  <Pill text="The Future of Work" color={C.gold} />
                 </div>
               </div>
             </div>
