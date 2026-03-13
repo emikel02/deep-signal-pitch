@@ -878,9 +878,9 @@ export default function DeepSignalPitchDeck() {
             margin: "0 auto 40px", lineHeight: 1.65, fontWeight: 400,
           }}>
             OpenAI builds the brains. Businesses need the hands.
-            We bridge the gap — the first platform where any company uploads a job description,
-            connects their tools, and deploys an AI employee that works 24/7 for{" "}
-            <span style={{ color: C.gold, fontWeight: 700 }}>90% less</span> than a human hire.
+            We bridge the gap — the first platform where any company deploys AI employees
+            that handle the busywork so your team can focus on what actually matters.{" "}
+            <span style={{ color: C.gold, fontWeight: 700 }}>Replace roles or supercharge the ones you have.</span>
           </p>
 
           {/* Key stats row */}
@@ -1057,10 +1057,53 @@ export default function DeepSignalPitchDeck() {
           <SectionHeader
             pill="The Future Is Obvious"
             pillColor={C.green}
-            title={<>Why Would You Pay $65K When You Can Pay <span style={{ color: C.green }}>$5K</span>?</>}
-            subtitle="Same work output. Same accountability. Available 24/7. Never quits. Gets smarter every day. This isn't a question of if — it's how fast."
+            title={<>Hire AI or <span style={{ color: C.cyan }}>Amplify Your Team</span> — Either Way, You Win</>}
+            subtitle="Replace a $65K role entirely — or give your existing team AI-powered support that eliminates busywork and lets them focus on high-value decisions. Most clients do both."
           />
           <BeforeAfter />
+
+          {/* Amplify callout */}
+          <div style={{
+            marginTop: 32, padding: "28px 32px", borderRadius: 20,
+            background: `linear-gradient(135deg, ${C.cyan}0a, ${C.purple}08)`,
+            border: `1px solid ${C.cyan}25`, position: "relative", overflow: "hidden",
+          }}>
+            <div style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: 2,
+              background: `linear-gradient(90deg, ${C.cyan}, ${C.purple})`,
+            }} />
+            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ flex: "1 1 300px", maxWidth: 480 }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: C.cyan, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
+                  It's Not Just Replacement
+                </div>
+                <div style={{ fontSize: "clamp(18px, 2.5vw, 24px)", fontWeight: 900, color: C.white, lineHeight: 1.3, marginBottom: 12 }}>
+                  Your best people are drowning in tasks beneath their talent.
+                </div>
+                <p style={{ fontSize: 14, color: C.gray, lineHeight: 1.7 }}>
+                  Your $85K operations manager spends 60% of their day on data entry, email triage, and scheduling.
+                  Deep Signal handles that — so they can spend 100% of their time on strategy, relationships, and growth.
+                  <span style={{ color: C.cyan, fontWeight: 700 }}> Same headcount. 3x the output.</span>
+                </p>
+              </div>
+              <div style={{ flex: "0 0 auto", display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center" }}>
+                {[
+                  { role: "Sales Rep", before: "40% selling", after: "90% selling", color: C.blue },
+                  { role: "Ops Manager", before: "30% strategy", after: "85% strategy", color: C.gold },
+                  { role: "Office Admin", before: "Overwhelmed", after: "Runs 3x more", color: C.green },
+                ].map((r, i) => (
+                  <div key={i} style={{
+                    padding: "16px 18px", borderRadius: 14, width: 150, textAlign: "center",
+                    background: C.card, border: `1px solid ${r.color}25`,
+                  }}>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: r.color, marginBottom: 8 }}>{r.role}</div>
+                    <div style={{ fontSize: 11, color: C.red, marginBottom: 4, textDecoration: "line-through", opacity: 0.7 }}>{r.before}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: C.green }}>{r.after}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* ════════════════ LIVE DEMO ════════════════ */}
@@ -1180,7 +1223,8 @@ export default function DeepSignalPitchDeck() {
 
               <div style={{ maxWidth: 660, margin: "0 auto 20px" }}>
                 <p style={{ fontSize: 17, color: C.gray, lineHeight: 1.75, marginBottom: 16 }}>
-                  Every business in the world will hire AI employees.
+                  Every business in the world will hire AI employees — not just to replace roles,
+                  but to <em style={{ color: C.cyan }}>amplify the people they already have</em>.
                   The question isn't <em style={{ color: C.white }}>if</em> — it's <em style={{ color: C.white }}>where</em>.
                 </p>
                 <p style={{ fontSize: 17, lineHeight: 1.75, marginBottom: 24 }}>
@@ -1200,8 +1244,9 @@ export default function DeepSignalPitchDeck() {
                   <span style={{ color: C.gold, fontWeight: 800 }}>The thesis is simple:</span> OpenAI and Anthropic
                   are spending billions to make AI smarter. Enterprise giants like 3M and JPMorgan are spending billions
                   to adopt it. But <span style={{ color: C.white, fontWeight: 700 }}>33 million small and medium businesses</span> — the
-                  backbone of the US economy — have no way in. We are the on-ramp. First to market. First to build the
-                  deployment data. First to own the playbooks. That head start compounds into a moat nobody can cross.
+                  backbone of the US economy — have no way in. We are the on-ramp. Not just replacing roles — giving every
+                  existing employee an AI-powered force multiplier so they can focus on what actually moves the needle.
+                  First to market. First to own the playbooks. That head start compounds into a moat nobody can cross.
                 </div>
               </div>
 
