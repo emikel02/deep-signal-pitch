@@ -35,27 +35,6 @@ function useInView(threshold = 0.15) {
   return [ref, inView];
 }
 
-function AnimNum({ target, prefix = "", suffix = "", duration = 2200, delay = 0, decimals = 0 }) {
-  const [val, setVal] = useState(0);
-  const [ref, inView] = useInView(0.3);
-  useEffect(() => {
-    if (!inView) return;
-    let rafId;
-    const t = setTimeout(() => {
-      const start = Date.now();
-      const step = () => {
-        const p = Math.min((Date.now() - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - p, 4);
-        setVal(parseFloat((target * ease).toFixed(decimals)));
-        if (p < 1) rafId = requestAnimationFrame(step);
-      };
-      step();
-    }, delay);
-    return () => { clearTimeout(t); if (rafId) cancelAnimationFrame(rafId); };
-  }, [inView, target, duration, delay, decimals]);
-  return <span ref={ref}>{prefix}{val.toLocaleString()}{suffix}</span>;
-}
-
 // ─── REUSABLE COMPONENTS ─────────────────────────────────────
 function GlowOrb({ color, size, top, left, opacity = 0.1 }) {
   return (
@@ -110,36 +89,6 @@ function SectionHeader({ pill, pillColor, title, subtitle }) {
           margin: "16px auto 0", lineHeight: 1.65,
         }}>{subtitle}</p>
       )}
-    </div>
-  );
-}
-
-function StatCard({ label, value, sub, color = C.blue, icon }) {
-  return (
-    <div style={{
-      background: `linear-gradient(145deg, ${C.card}, ${color}06)`,
-      border: `1px solid ${color}30`,
-      borderRadius: 20, padding: "32px 24px", textAlign: "center",
-      position: "relative", overflow: "hidden", flex: "1 1 200px", minWidth: 185,
-      transition: "transform 0.3s, box-shadow 0.3s",
-    }}
-      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = `0 12px 40px ${color}15`; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-    >
-      <div style={{
-        position: "absolute", top: -40, right: -40, width: 100, height: 100,
-        borderRadius: "50%", background: color, opacity: 0.05, filter: "blur(25px)",
-      }} />
-      {icon && <div style={{ fontSize: 28, marginBottom: 10, opacity: 0.9 }}>{icon}</div>}
-      <div style={{
-        fontSize: 11, color: C.gray, fontWeight: 600, letterSpacing: 1.2,
-        marginBottom: 10, textTransform: "uppercase",
-      }}>{label}</div>
-      <div style={{
-        fontSize: "clamp(32px, 4vw, 42px)", fontWeight: 900, color: C.white,
-        letterSpacing: -1.5, lineHeight: 1, marginBottom: 8,
-      }}>{value}</div>
-      {sub && <div style={{ fontSize: 13, color, fontWeight: 600 }}>{sub}</div>}
     </div>
   );
 }
