@@ -973,16 +973,10 @@ export default function DeepSignalPitchDeck() {
         ::-webkit-scrollbar-track { background: ${C.bg}; }
         ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 3px; }
         ::selection { background: ${C.blue}40; color: ${C.white}; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
         @keyframes gradientShift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
-        }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
         }
         @keyframes spin {
           from { transform: rotate(0deg); }
@@ -1012,7 +1006,7 @@ export default function DeepSignalPitchDeck() {
           </div>
           <h1 style={{
             fontSize: "clamp(38px, 6vw, 72px)", fontWeight: 900, lineHeight: 1.02,
-            letterSpacing: -3, marginBottom: 28, maxWidth: 950, margin: "0 auto 28px",
+            letterSpacing: -3, maxWidth: 950, margin: "0 auto 28px",
             background: `linear-gradient(135deg, ${C.white}, ${C.blue}, ${C.cyan}, ${C.white})`,
             backgroundSize: "300% 300%",
             animation: "gradientShift 8s ease infinite",
@@ -1263,7 +1257,7 @@ export default function DeepSignalPitchDeck() {
             <StatCard label="LTV:CAC" value={<AnimNum target={53} suffix="x" duration={2000} />} sub="Top-decile SaaS" color={C.gold} icon="🎯" />
             <StatCard label="Gross Margin" value={<AnimNum target={85} suffix="%" duration={2000} delay={200} />} sub="Software-like" color={C.green} icon="📈" />
             <StatCard label="Net Revenue Retention" value={<AnimNum target={140} suffix="%" duration={2000} delay={400} />} sub="Businesses add more AI" color={C.cyan} icon="🔄" />
-            <StatCard label="Monthly Churn" value={<><AnimNum target={2} suffix="%" duration={1500} delay={600} /></>} sub="Knowledge = switching cost" color={C.purple} icon="🔒" />
+            <StatCard label="Monthly Churn" value={<AnimNum target={2} prefix="<" suffix="%" duration={1500} delay={600} />} sub="Knowledge = switching cost" color={C.purple} icon="🔒" />
           </div>
           <UnitEconomics />
         </Section>
@@ -1397,7 +1391,7 @@ export default function DeepSignalPitchDeck() {
             <div style={{ position: "relative" }}>
               <h2 style={{
                 fontSize: "clamp(26px, 4vw, 46px)", fontWeight: 900, lineHeight: 1.15,
-                letterSpacing: -1.5, marginBottom: 28, maxWidth: 800, margin: "0 auto 28px",
+                letterSpacing: -1.5, maxWidth: 800, margin: "0 auto 28px",
               }}>
                 This is happening with or without us.<br />
                 <span style={{ color: C.gold }}>We intend to be first.</span>
