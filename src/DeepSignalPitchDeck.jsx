@@ -5,7 +5,6 @@ const C = {
   bg: "#050a14",
   bgAlt: "#080e1c",
   card: "#0a1628",
-  cardHover: "#0d1e38",
   border: "#1a2d4d",
   blue: "#3b82f6",
   blueGlow: "#2563eb",
@@ -412,7 +411,7 @@ function LiveHiringDemo() {
               letterSpacing: 0.5,
             }}
           >
-            {i < 5 ? `0${i + 1}` : "✓"}
+            {`0${i + 1}`}
           </button>
         ))}
       </div>
@@ -1103,12 +1102,13 @@ export default function DeepSignalPitchDeck() {
           <div style={{
             position: "relative", padding: "40px 0", overflow: "hidden",
           }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "stretch", justifyContent: "center", gap: 0, flexWrap: "wrap" }}>
               {/* Left: AI Giants */}
               <div style={{
-                flex: "1 1 240px", maxWidth: 300, padding: "28px 24px", borderRadius: "20px 0 0 20px",
+                flex: "1 1 240px", maxWidth: 300, padding: "28px 24px",
+                borderRadius: 20, marginRight: -12,
                 background: `linear-gradient(135deg, ${C.purple}12, ${C.blue}08)`,
-                border: `1px solid ${C.purple}30`, borderRight: "none",
+                border: `1px solid ${C.purple}30`,
                 textAlign: "center",
               }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: C.purple, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>
@@ -1152,9 +1152,10 @@ export default function DeepSignalPitchDeck() {
 
               {/* Right: SMBs */}
               <div style={{
-                flex: "1 1 240px", maxWidth: 300, padding: "28px 24px", borderRadius: "0 20px 20px 0",
+                flex: "1 1 240px", maxWidth: 300, padding: "28px 24px",
+                borderRadius: 20, marginLeft: -12,
                 background: `linear-gradient(135deg, ${C.green}08, ${C.cyan}12)`,
-                border: `1px solid ${C.green}30`, borderLeft: "none",
+                border: `1px solid ${C.green}30`,
                 textAlign: "center",
               }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: C.green, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>
